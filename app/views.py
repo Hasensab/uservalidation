@@ -13,7 +13,9 @@ def School_Creation(request):
             sl=SD.cleaned_data['slocation']
             se=SD.cleaned_data['email']
             sre=SD.cleaned_data['reenteremail']
-            SDO=School.objects.get_or_create(sname=sn,sprinciple=sp,slocation=sl,email=se,reenteremail=sre)[0]
+            p=SD.cleaned_data['password']
+            rp=SD.cleaned_data['repass']
+            SDO=School.objects.get_or_create(sname=sn,sprinciple=sp,slocation=sl,email=se,reenteremail=sre, password=p,repass=rp)[0]
             SDO.save()
             return HttpResponse('data is inserted into School table')
         else:
